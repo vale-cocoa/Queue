@@ -74,11 +74,13 @@ public protocol Queue {
     /// Returns the first element of the queue, or`nil` when the queue is empty.
     ///
     /// - Returns: the first element of the queue, or `nil` when the queue is empty.
+    @discardableResult
     func peek() -> Element?
     
     /// Removes and returns the first element of the queue, or `nil` when the queue is empty.
     ///
     /// - Returns: the first element of the queue, or `nil` when the queue is empty.
+    @discardableResult
     mutating func dequeue() -> Element?
     
     /// Removes all stored elements, eventually keeping the storage capacity if so specified.
@@ -114,6 +116,7 @@ public protocol Queue {
 }
 
 extension Queue where Self: IteratorProtocol {
+    @discardableResult
     public mutating func dequeue() -> Element? { next() }
     
 }
