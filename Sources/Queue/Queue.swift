@@ -61,17 +61,17 @@ public protocol Queue {
     /// The number of stored elements.
     var count: Int { get }
     
-    /// A Boolean value indicating whether the heap buffer is empty.
+    /// A Boolean value indicating whether the queue contains elements or not.
     var isEmpty: Bool { get }
     
-    /// The total number of elements that the instance can contain without
+    /// The total number of elements that the queue can contain without
     /// allocating new storage.
     var capacity: Int { get }
     
-    /// A Boolean value indicating whether the heap buffer storage is full.
+    /// A Boolean value indicating whether the queue storage is full.
     var isFull: Bool { get }
     
-    /// Returns the first element of the queue, or`nil` when the queue is empty.
+    /// Returns the first element of the queue, or `nil` when the queue is empty.
     ///
     /// - Returns: the first element of the queue, or `nil` when the queue is empty.
     @discardableResult
@@ -85,18 +85,19 @@ public protocol Queue {
     
     /// Removes all stored elements, eventually keeping the storage capacity if so specified.
     ///
-    /// - Parameter keepingCapacity:    when set to `true`, the storage doesn't reduce its capacity.
+    /// - Parameter keepingCapacity:    A Boolean value, when set to `true`,
+    ///                                 the storage doesn't reduce its capacity.
     ///                                 Deafults to `false`.
     mutating func clear(keepingCapacity keepCapacity: Bool)
     
     /// Stores specified element in this queue.
     ///
-    /// - Parameter _: the element to store.
+    /// - Parameter _: The element to store.
     mutating func enqueue(_ newElement: Element)
     
     /// Stores in this queue all elements contained in the given sequence.
     ///
-    /// - Parameter contentsOf: the sequence of elements to store.
+    /// - Parameter contentsOf: The sequence of elements to store.
     mutating func enqueue<S: Sequence>(contentsOf newElements: S) where S.Iterator.Element == Element
     
     /// Reserves enough space to store the specified number of elements.
